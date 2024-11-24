@@ -13,7 +13,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module="PIL.TiffImagePlugin")
 
 # 데이터셋 경로 (절대 경로로 수정)
-DATASET_PATH = 'D:/git/imoge_make/dataset/images'  # 모든 데이터가 있는 폴더 경로
+DATASET_PATH = 'D:/git/img_mk/dataset/images'  # 모든 데이터가 있는 폴더 경로
 
 # 손상된 이미지 파일 제거 함수 정의
 def verify_and_remove(img_path):
@@ -112,6 +112,12 @@ model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),
 
 # 모델 학습
 history = model.fit(train_dataset, validation_data=validation_dataset, epochs=30)
+
+# 학습된 모델 가중치 저장 (.h5 형식)
+model_save_path = 'models/emotion_model/emotion_model.h5'
+os.makedirs(os.path.dirname(model_save_path), exist_ok=True)
+model.save(model_save_path)
+print(f'Model saved to {model_save_path}')
 
 # 최종 학습 및 검증 정확도 출력
 final_train_accuracy = history.history['accuracy'][-1]

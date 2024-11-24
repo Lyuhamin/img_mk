@@ -6,7 +6,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 
 # 데이터셋 경로 설정
-data_path = 'dataset/images/'
+data_path = 'D:/git/img_mk/dataset/images'
 
 # GoogleNet(InceptionV3) 모델 로드 (사전 학습된 가중치 사용)
 base_model = InceptionV3(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
@@ -60,7 +60,7 @@ validation_generator = validation_datagen.flow_from_directory(
     subset='validation'  # validation 데이터 (20%)
 )
 
-'''
+
 # Test 데이터 로드 (전체 데이터셋에서 20% 사용)
 test_generator = validation_datagen.flow_from_directory(
     data_path,
@@ -69,7 +69,7 @@ test_generator = validation_datagen.flow_from_directory(
     class_mode='categorical',
     subset='training'  # test 데이터 (20%)
 )
-'''
+
 
 # 모델 학습
 emotion_model.fit(
