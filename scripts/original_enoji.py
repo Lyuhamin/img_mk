@@ -11,12 +11,12 @@ model = torch.hub.load('ultralytics/yolov5', 'custom', path='D:/git/img_mk/model
 # 클래스와 해당 이모지 이미지 경로 매핑 정의
 EMOTION_EMOJI_IMAGES = {
     'angry': "D:/git/img_mk/dataset/imoji/angry/angry.png",
-    'anxiety': "D:/git/img_mk/dataset/imoji/anxiety/anxiety.jpg",
-    'happy': "D:/git/img_mk/dataset/imoji/happy/happy.jpg",
+    'anxiety': "D:/git/img_mk/dataset/imoji/anxiety/anxiety.png",
+    'happy': "D:/git/img_mk/dataset/imoji/happy/happy.png",
     'neutrality': "D:/git/img_mk/dataset/imoji/neutrality/neutrality.png",
-    'panic': "D:/git/img_mk/dataset/imoji/panic/panic.jpg",
-    'sad': "D:/git/img_mk/dataset/imoji/sad/sad.jpg",
-    'wound': "D:/git/img_mk/dataset/imoji/wound/wound.jpg"
+    'panic': "D:/git/img_mk/dataset/imoji/panic/panic.png",
+    'sad': "D:/git/img_mk/dataset/imoji/sad/sad.png",
+    'wound': "D:/git/img_mk/dataset/imoji/wound/wound.png"
 }
 
 # 감정 감지 및 이모지 추가 함수
@@ -66,7 +66,7 @@ for emotion in os.listdir(INPUT_DIR):
     
     if os.path.isdir(emotion_dir):
         for idx, img_name in enumerate(os.listdir(emotion_dir)):
-            if idx >= 10:
+            if idx >= 30:
                 break
             img_path = os.path.join(emotion_dir, img_name)
             output_path = os.path.join(output_emotion_dir, img_name)
